@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+
+        <record id="helpdesk_ticket_view_form_inherit_helpdesk_invoicing" model="ir.ui.view">
+            <field name='name'>helpdesk.ticket.form.inherit.invoicing</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="project_ticket_id"/>
+                    <field name="task_ticket_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="action_create_projects_from_excel_window" model="ir.actions.act_window">
+            <field name="name">Import projects</field>
+            <field name="res_model">project.import.wizard</field>
+            <field name="view_mode">form</field>
+
+            <field name="target">new</field>
+        </record>
+
+
+        <record id="action_create_tasks_from_excel_window" model="ir.actions.act_window">
+            <field name="name">Import tasks</field>
+            <field name="res_model">task.import.wizard</field>
+            <field name="view_mode">form</field>
+
+            <field name="target">new</field>
+        </record>
+
+
+        <record id="action_create_ticket_from_excel_window" model="ir.actions.act_window">
+            <field name="name">Import ticket</field>
+            <field name="res_model">ticket.import.wizard</field>
+            <field name="view_mode">form</field>
+
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="menu_import_projects" name="Import projects" parent="project.menu_project_config" sequence="12"
+                  action="action_create_projects_from_excel_window"/>
+        <menuitem id="menu_import_tasks" name="Import tasks" parent="project.menu_project_config" sequence="12"
+                  action="action_create_tasks_from_excel_window"/>
+        <menuitem id="menu_import_tickets" name="Import tickets" parent="project.menu_project_config" sequence="12"
+                  action="action_create_ticket_from_excel_window"/>
+
+    </data>
+</odoo>
